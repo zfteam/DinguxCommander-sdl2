@@ -225,11 +225,11 @@ const bool CDialog::keyHold(void)
     switch(m_lastPressed)
     {
         case MYKEY_UP:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_UP]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_UP)]))
                 l_ret = moveCursorUp(false);
             break;
         case MYKEY_DOWN:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_DOWN]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_DOWN)]))
                 l_ret = moveCursorDown(false);
             break;
         default:

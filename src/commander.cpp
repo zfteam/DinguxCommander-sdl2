@@ -134,23 +134,23 @@ const bool CCommander::keyHold(void)
     switch(m_lastPressed)
     {
         case MYKEY_UP:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_UP]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_UP)]))
                 l_ret = m_panelSource->moveCursorUp(1);
             break;
         case MYKEY_DOWN:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_DOWN]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_DOWN)]))
                 l_ret = m_panelSource->moveCursorDown(1);
             break;
         case MYKEY_PAGEUP:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_PAGEUP]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_PAGEUP)]))
                 l_ret = m_panelSource->moveCursorUp(NB_VISIBLE_LINES - 1);
             break;
         case MYKEY_PAGEDOWN:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_PAGEDOWN]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_PAGEDOWN)]))
                 l_ret = m_panelSource->moveCursorDown(NB_VISIBLE_LINES - 1);
             break;
         case MYKEY_SELECT:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_SELECT]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_SELECT)]))
                 l_ret = m_panelSource->addToSelectList(true);
             break;
         default:

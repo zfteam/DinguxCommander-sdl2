@@ -134,27 +134,27 @@ const bool CViewer::keyHold(void)
     switch(m_lastPressed)
     {
         case MYKEY_UP:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_UP]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_UP)]))
                 l_ret = moveUp(1);
             break;
         case MYKEY_DOWN:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_DOWN]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_DOWN)]))
                 l_ret = moveDown(1);
             break;
         case MYKEY_PAGEUP:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_PAGEUP]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_PAGEUP)]))
                 l_ret = moveUp(VIEWER_NB_LINES - 1);
             break;
         case MYKEY_PAGEDOWN:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_PAGEDOWN]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_PAGEDOWN)]))
                 l_ret = moveDown(VIEWER_NB_LINES - 1);
             break;
         case MYKEY_LEFT:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_LEFT]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_LEFT)]))
                 l_ret = moveLeft();
             break;
         case MYKEY_RIGHT:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_RIGHT]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_RIGHT)]))
             {
                 moveRight();
                 l_ret = true;

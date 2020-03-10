@@ -276,34 +276,34 @@ const bool CKeyboard::keyHold(void)
     switch(m_lastPressed)
     {
         case MYKEY_UP:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_UP]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_UP)]))
                 l_ret = moveCursorUp(false);
             break;
         case MYKEY_DOWN:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_DOWN]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_DOWN)]))
                 l_ret = moveCursorDown(false);
             break;
         case MYKEY_LEFT:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_LEFT]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_LEFT)]))
                 l_ret = moveCursorLeft(false);
             break;
         case MYKEY_RIGHT:
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_RIGHT]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_RIGHT)]))
                 l_ret = moveCursorRight(false);
             break;
         case MYKEY_OPEN:
             // A => Add letter
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_OPEN]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_OPEN)]))
                 l_ret = type();
             break;
         case MYKEY_SYSTEM:
             // Y => Backspace
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_SYSTEM]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_SYSTEM)]))
                 l_ret = backspace();
             break;
         case MYKEY_OPERATION:
             // X => Space
-            if (tick(SDL_GetKeyboardState(NULL)[MYKEY_OPERATION]))
+            if (tick(SDL_GetKeyboardState(NULL)[SDL_GetScancodeFromKey(MYKEY_OPERATION)]))
                 l_ret = type(" ");
             break;
         default:
