@@ -15,7 +15,7 @@ all:$(OBJS)
 	$(CC) $(OBJS) -o $(target) $(LIB)
 
 %.o:%.cpp
-	$(CC) -DRESDIR="\"$(RESDIR)\""  -c $< -o $@  $(INCLUDE)
+	$(CC) -DRESDIR="\"$(RESDIR)\"" -DODROID_GO_ADVANCE  -c $< -o $@  $(INCLUDE) 
 
 clean:
 	rm $(OBJS) $(target) -f
