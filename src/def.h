@@ -4,8 +4,13 @@
 //~ #define INHIBIT(X) X
 #define INHIBIT(X) /* X */
 
-#define SCREEN_WIDTH          320
-#define SCREEN_HEIGHT         240
+// #define SCREEN_WIDTH          320
+#define SCREEN_WIDTH          480
+// #define SCREEN_HEIGHT         240
+#define SCREEN_HEIGHT         320
+#define SCALE_WIDTH           480  
+#define SCALE_HEIGHT          320
+
 #define SCREEN_BPP            16
 #define SURFACE_FLAGS         SDL_SWSURFACE
 #define MS_PER_FRAME          33

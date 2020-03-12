@@ -9,6 +9,7 @@
 
 // Globals
 SDL_Surface *Globals::g_screen = NULL;
+SDL_Surface *Globals::g_screen_real = NULL;
 SDL_Window *Globals::g_sdlwindow = NULL;
 SDL_Joystick *Globals::g_joy=NULL;
 
@@ -38,12 +39,29 @@ int main(int argc, char** argv)
                               SDL_WINDOW_OPENGL);  
 
     // Globals::g_screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SURFACE_FLAGS);
-    Globals::g_screen = SDL_GetWindowSurface(Globals::g_sdlwindow);
-    if (Globals::g_screen == NULL)
+    Globals::g_screen_real = SDL_GetWindowSurface(Globals::g_sdlwindow);
+    if (Globals::g_screen_real == NULL)
     {
         std::cerr << "SDL_SetVideoMode failed: " << SDL_GetError() << std::endl;
         return 1;
     }
+
+    Uint32 rmask, gmask, bmask, amask;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    rmask = 0xff000000;
+    gmask = 0x00ff0000;
+    bmask = 0x0000ff00;
+    amask = 0x000000ff;
+#else
+    rmask = 0x000000ff;
+    gmask = 0x0000ff00;
+    bmask = 0x00ff0000;
+    amask = 0xff000000;
+#endif
+
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "best");
+    Globals::g_screen = SDL_CreateRGBSurface(0, 320, 240, 32,
+                                   rmask, gmask, bmask, amask);
     
     // Check for joystick
     if (SDL_NumJoysticks() > 0) {

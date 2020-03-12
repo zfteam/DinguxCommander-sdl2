@@ -36,8 +36,12 @@ void SDL_utils::applySurface(const Sint16 p_x, const Sint16 p_y, SDL_Surface* p_
     // Set offsets
     l_offset.x = p_x;
     l_offset.y = p_y;
+    // l_offset.w = SCREEN_WIDTH;
+    // l_offset.h = SCREEN_HEIGHT;
     //Blit the surface
     SDL_BlitSurface(p_source, p_clip, p_destination, &l_offset);
+
+     
 }
 
 TTF_Font *SDL_utils::loadFont(const std::string &p_font, const int p_size)
@@ -96,6 +100,9 @@ void SDL_utils::renderAll(void)
     // Draw windows
     for (std::vector<CWindow *>::iterator l_it = Globals::g_windows.begin() + l_i; l_it != Globals::g_windows.end(); ++l_it)
         (*l_it)->render(l_it + 1 == Globals::g_windows.end());
+
+    SDL_Rect rect{SCREEN_WIDTH/2-SCALE_WIDTH/2,0,SCALE_WIDTH,SCALE_HEIGHT};
+    SDL_BlitScaled(Globals::g_screen, NULL, Globals::g_screen_real,&rect);
 }
 
 void SDL_utils::hastalavista(void)
